@@ -66,13 +66,8 @@ $(document).ready(function(){
     return stations;  
   }
 
-  /* Entry Point - Button Click triggers the Process of creating trains */
-  document.getElementById('btnStart').onclick = function() {
-    startTrain();
-    this.className += 'disabled';
-    this.disabled = true;
-    this.innerText= 'Started...';
-  }
+  /* Entry Point */
+  startTrain();
 
   /* startTrain will kick off the process by adding animation to Train */
   function startTrain() {
