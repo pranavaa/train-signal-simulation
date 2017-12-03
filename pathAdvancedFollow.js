@@ -50,7 +50,7 @@ $(document).ready(function(){
     var stations = [];
     arrSignalPositions = [];
     var signalPosition = startingPosition;
-    var signals = ['red', 'yellow', 'green'];
+
     for( var i = 0; i< count; i++ ) {
       stations.push(
         svg.append("image")
@@ -66,7 +66,8 @@ $(document).ready(function(){
     return stations;  
   }
 
-  document.getElementById('btnMove').onclick = function() {
+  /* Entry Point - Button Click triggers the Process of creating trains */
+  document.getElementById('btnStart').onclick = function() {
     startTrain();
     this.className += 'disabled';
     this.disabled = true;
@@ -132,7 +133,7 @@ $(document).ready(function(){
     }
 
     if(mySignals.length > 2) {
-      mySignals[mySignals.length - 3].attr("xlink:href", 'images/' + SignalStatus.PROCEED  + ".png");
+      updateSignalStatus(mySignals.length - 3, SignalStatus.PROCEED);
     }
   }
 
