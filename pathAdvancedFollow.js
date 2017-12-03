@@ -92,7 +92,7 @@ $(document).ready(function(){
               var signalNo = _.indexOf(arrSignalPositions, trainPosition)
               
               if( signalNo >= 0)  {
-                updateSignal(signalNo);
+                updateSignals(signalNo);
                 lastUpdatedPosition = trainPosition;
               }
               
@@ -107,15 +107,16 @@ $(document).ready(function(){
   }
 
   /* updateSignal will update the status of current and previous Signals with appropriate Status */
-  function updateSignal(signalNo) {
-      mySignals[signalNo].attr("xlink:href", SignalStatus.STOP  + ".png");
+  function updateSignals(signalNo) {
+      updateSignalStatus(signalNo, SignalStatus.STOP);
+      
 
       if(signalNo >= 1) {
-        mySignals[signalNo - 1].attr("xlink:href", SignalStatus.WAIT  + ".png");  
+        updateSignalStatus(signalNo -1, SignalStatus.WAIT);
       }
 
       if(signalNo >= 2) {
-        mySignals[signalNo - 2].attr("xlink:href", SignalStatus.PROCEED  + ".png");
+        updateSignalStatus(signalNo - 2, SignalStatus.PROCEED); 
       }
 
       if(signalNo === 2) {
@@ -124,15 +125,19 @@ $(document).ready(function(){
   }
 
   function refreshSignal() {
-    mySignals[mySignals.length - 1].attr("xlink:href", SignalStatus.PROCEED  + ".png");
+    updateSignalStatus(mySignals.length - 1, SignalStatus.PROCEED); 
 
     if(mySignals.length > 1) {
-      mySignals[mySignals.length - 2].attr("xlink:href", SignalStatus.PROCEED  + ".png");
+      updateSignalStatus(mySignals.length - 2, SignalStatus.PROCEED);
     }
 
     if(mySignals.length > 2) {
-      mySignals[mySignals.length - 3].attr("xlink:href", SignalStatus.PROCEED  + ".png");
+      mySignals[mySignals.length - 3].attr("xlink:href", 'images/' + SignalStatus.PROCEED  + ".png");
     }
+  }
+
+  function updateSignalStatus(signalNo, status) {
+    mySignals[signalNo].attr("xlink:href", 'images/' + status  + ".png");
   }
 
 });
