@@ -1,0 +1,14 @@
+{
+  "name": "D3_TRAIN_SIGNAL_SIMULATION",
+  "version": "1.0.0",
+  "description": "Train Signal Simulation using D3",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pranav Ainavolu",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
